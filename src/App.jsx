@@ -27,6 +27,21 @@ function App() {
 
   const { attempt, letterPos } = currAttempt;
 
+  const resetGame = () => {
+    setBoard([
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+    ]); // had to manually add these blank matrix, as setBoard(staringBoard) isn't working
+    setCurrAttempt({ attempt: 0, letterPos: 0 });
+    setGameOver({ gameOver: false, guessedWord: false });
+    setDisabledLetters([]);
+    generateWord().then((randomWord) => setCorrectWord(randomWord));
+  };
+
   const onSelectLetter = (keyVal) => {
     if (letterPos > 4 || attempt > 5) return; // had to put 'attempt > 5' check.. cuz it was tweaking
     const newBoard = [...board];
@@ -79,6 +94,7 @@ function App() {
           setDisabledLetters,
           gameOver,
           setGameOver,
+          resetGame,
         }}
       >
         <div className="game">
