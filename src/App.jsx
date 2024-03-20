@@ -17,16 +17,6 @@ function App() {
   });
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letterPos: 0 });
 
-  useEffect(() => {
-    //generateWord(), as this function is async, it returns promise.. thats why to get the data, had to use .then()
-    generateWord().then((randomWord) => {
-      setCorrectWord(randomWord);
-      //console.log(randomWord); {uncomment this to see the answer on console}
-    });
-  }, []);
-
-  const { attempt, letterPos } = currAttempt;
-
   const resetGame = () => {
     setBoard([
       ["", "", "", "", ""],
@@ -41,6 +31,16 @@ function App() {
     setDisabledLetters([]);
     generateWord().then((randomWord) => setCorrectWord(randomWord));
   };
+
+  useEffect(() => {
+    //generateWord(), as this function is async, it returns promise.. thats why to get the data, had to use .then()
+    generateWord().then((randomWord) => {
+      setCorrectWord(randomWord);
+      //console.log(randomWord); {uncomment this to see the answer on console}
+    });
+  }, []);
+
+  const { attempt, letterPos } = currAttempt;
 
   const onSelectLetter = (keyVal) => {
     if (letterPos > 4 || attempt > 5) return; // had to put 'attempt > 5' check.. cuz it was tweaking

@@ -120,6 +120,25 @@ nav h1 {
   cursor: pointer;
 }
 
+.playagain-button {
+  background-color: white;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.playagain-button:hover {
+  background-color: #555555;
+  color: white;
+}
+
 @media only screen and (max-width: 600px) {
   .board {
     width: 260px;
